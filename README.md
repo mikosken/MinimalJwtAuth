@@ -69,7 +69,9 @@ fill out the text box similar to image below before clicking **Execute**.
 
 <details>
     <summary><b>Show image: API request to register a new user</b></summary>
-    ![API request to register a new user](https://raw.githubusercontent.com/mikosken/MinimalJwtAuth/master/readme_images/Swagger_UI_2_register_request.png)
+    
+![API request to register a new user](https://raw.githubusercontent.com/mikosken/MinimalJwtAuth/master/readme_images/Swagger_UI_2_register_request.png)
+
 </details>
 
 
@@ -79,7 +81,9 @@ and fill out the text box as before, and finally clicking **Execute**.
 
 <details>
     <summary><b>Show image: Response upon successful login request</b></summary>
-    ![Response upon successful login request](https://raw.githubusercontent.com/mikosken/MinimalJwtAuth/master/readme_images/Swagger_UI_3_login_response.png)
+    
+![Response upon successful login request](https://raw.githubusercontent.com/mikosken/MinimalJwtAuth/master/readme_images/Swagger_UI_3_login_response.png)
+
 </details>
 
 
@@ -95,7 +99,9 @@ to the top of the page and click on the button **Authorize**.
 
 <details>
     <summary><b>Show image: Adding a bearer token to Swagger requests</b></summary>
+
 ![Adding a bearer token to Swagger requests](https://raw.githubusercontent.com/mikosken/MinimalJwtAuth/master/readme_images/Swagger_UI_4_authorize.png)
+
 </details>
 
 
@@ -108,7 +114,9 @@ Now try accessing the weather API as before. This time you should receive a code
 
 <details>
     <summary><b>Show image: Successful response from JWT protected API endpoint</b></summary>
+
 ![Successful response from JWT protected API endpoint](https://raw.githubusercontent.com/mikosken/MinimalJwtAuth/master/readme_images/Swagger_UI_5_weather_success.png)
+
 </details>
 
 
