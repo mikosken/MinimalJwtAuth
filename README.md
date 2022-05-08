@@ -54,7 +54,7 @@ First clone and run the project using the instructions in
 [Getting Started](#Getting-Started) below.
 
 Once you have the project running, if it doesn't automatically open your browser
-at the built-in swagger page, open https://localhost:<port>/swagger/index.html
+at the built-in swagger page, open https://localhost:PORT/swagger/index.html
 
 You can find the correct port number in the console where you ran
 "dotnet watch run". Look for a locahost URL starting with **https** and
@@ -62,18 +62,26 @@ copy-paste that into your browser.
 
 You should arrove at a page similar to this:
 
-[Image 1]
+![Swagger User Interface](https://raw.githubusercontent.com/mikosken/MinimalJwtAuth/master/readme_images/Swagger_UI_1.png)
 
 Expand the section **/api/auth/register**, click the button **Try it out**, and
-fill out the text box similar to this before clicking **Execute**.
+fill out the text box similar to image below before clicking **Execute**.
 
-[Image 2]
+<details>
+    <summary><b>Show image: API request to register a new user</b></summary>
+    ![API request to register a new user](https://raw.githubusercontent.com/mikosken/MinimalJwtAuth/master/readme_images/Swagger_UI_2_register_request.png)
+</details>
+
 
 You should receive a response 201: Created. At this point you can try to log in
 by expanding the section **/api/auth/login**, click the button **Try it out**,
 and fill out the text box as before, and finally clicking **Execute**.
 
-[Image 3]
+<details>
+    <summary><b>Show image: Response upon successful login request</b></summary>
+    ![Response upon successful login request](https://raw.githubusercontent.com/mikosken/MinimalJwtAuth/master/readme_images/Swagger_UI_3_login_response.png)
+</details>
+
 
 You should receive a response 200: Success with a token in the request body.
 Copy the long string inside the citation marks, this is the JWT you need to
@@ -81,10 +89,15 @@ access the weather API.
 
 First attempt to access the weather API by expanding **/api/weather**, clicking
 **Try it out**, and **Execute**. You should get response 401: Unauthorized.
+
 Next, tell swagger to attach your authentication token to API requests. Scroll
 to the top of the page and click on the button **Authorize**.
 
-[Image 4]
+<details>
+    <summary><b>Show image: Adding a bearer token to Swagger requests</b></summary>
+![Adding a bearer token to Swagger requests](https://raw.githubusercontent.com/mikosken/MinimalJwtAuth/master/readme_images/Swagger_UI_4_authorize.png)
+</details>
+
 
 An input prompt should appear asking you for the JWT you copied earlier. In the
 text box enter without quotes: "**Bearer eyJhb...Py6gw**" where *eyJhb...Py6gw*
@@ -93,10 +106,10 @@ is *your copied token*. Then click **Authorize** and **Close**.
 Now try accessing the weather API as before. This time you should receive a code
 200: Success, with some random wather data in the body.
 
-[Image 5]
-
-## Interesting files
-
+<details>
+    <summary><b>Show image: Successful response from JWT protected API endpoint</b></summary>
+![Successful response from JWT protected API endpoint](https://raw.githubusercontent.com/mikosken/MinimalJwtAuth/master/readme_images/Swagger_UI_5_weather_success.png)
+</details>
 
 
 ## Getting Started
