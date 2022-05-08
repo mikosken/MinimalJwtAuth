@@ -6,6 +6,13 @@ based access control for REST-APIs.
 The code is fairly extensively commented, and some possible suggestions for
 extensions and possible useage are also in comments.
 
+For a step-by-step overview of how to create JWT-based auth, see section
+[Overview of creating JWT-based auth](#Overview-of-creating-JWT-based-auth)
+below.
+
+Adding functionality for creating administrators and managing users and claims
+is left as an exercise for the reader.
+
 ## In depth
 
 One of the simpler ways to secure an API in dotNet is to use the Identity package
@@ -112,6 +119,55 @@ dotnet ef database update
 dotnet build
 dotnet watch run
 ```
+
+## Overview of creating JWT-based auth
+
+A micro-tutorial of how to use JSON Web Token based authorization with a dotNet
+Core Web API.
+
+1. Create new dotNet Core Web API project.
+
+   ```
+   dotnet new webapi -n <ProjectName>
+   ```
+
+2. Add required Nuget packages:
+
+   * Microsoft.AspNetCore.Authentication.JwtBearer: "Middleware that enables an application to receive an OpenID Connect bearer token."
+   * Microsoft.AspNetCore.Identity: "ASP.NET Core Identity allows you to add login features to your application and makes it easy to customize data about the logged in user."
+   * Microsoft.AspNetCore.Identity.EntityFrameworkCore: "Identity provider that uses Entity Framework Core."
+   * Microsoft.EntityFrameworkCore: "Entity Framework Core is a modern object-database mapper for .NET."
+   * Microsoft.EntityFrameworkCore.Sqlite: "SQLite database provider for Entity Framework Core."
+   * Microsoft.EntityFrameworkCore.Tools: "Entity Framework Core Tools for the NuGet Package Manager Console."
+   * System.IdentityModel.Tokens.Jwt: "Includes types that provide support for creating, serializing and validating JSON Web Tokens."
+
+
+3. Create IdentityDbContext: /Data/ApplicationContext.cs
+3. Inject database context and configure to use SQLite: Program.cs
+3. Add connection string for SQLite to development appsettings: appsettings.Development.json
+
+4. Create initial database for identity:
+
+   ```
+   dotnet ef migrations add "Initial identity db" -o "./Migrations"
+   dotnet ef database update
+   ```
+
+5. Add Identity service and configure password and user requirements: Program.cs
+5. Add and configure Authentication service with JWTBearer: Program.cs
+5. Add Autorization service and add policies etc: Program.cs
+5. Add JWT signing key to development appsettings: appsettings.Development.json
+5. Add UseAuthentication to request pipeline: Program.cs
+
+6. Add empty Auth controller with constructor injection for config, roleManager, signInManager, and userManager: /Controllers/AuthController.cs
+
+7. Create ViewModels for Login, Registration, and User data: /ViewModels/
+7. Add JwtValidForSeconds to developer appsettings: appsettings.Development.json
+7. Add API methods for RegisterUser, and Login to AuthController. Helper method CreateJwtToken.: /Controllers/AuthController.cs
+
+8. Restrict your APIs to require a valid JWT for authorization.
+8. (Optional) Add function to use bearer tokens for authorization in Swagger: Program.cs
+
 
 ## References
 
