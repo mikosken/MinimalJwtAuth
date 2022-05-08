@@ -21,6 +21,7 @@ code .
 
 To build and run enter in console:
 ```
+cd .\AuthAPI
 dotnet build
 dotnet run
 ```
